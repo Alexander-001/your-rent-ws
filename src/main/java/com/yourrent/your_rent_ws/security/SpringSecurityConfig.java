@@ -57,6 +57,8 @@ public class SpringSecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/users/role-admin").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/users/role-user").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/users/{id}").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/auth/send-code-phone").permitAll()
+                .requestMatchers(HttpMethod.POST, "/auth/validate-email").permitAll()
                 .anyRequest().authenticated())
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtValidationFilter(authenticationManager()))

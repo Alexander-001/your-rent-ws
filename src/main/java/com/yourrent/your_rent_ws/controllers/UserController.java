@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yourrent.your_rent_ws.models.User;
-import com.yourrent.your_rent_ws.models.UserRole;
+import com.yourrent.your_rent_ws.models.dto.UserRole;
 import com.yourrent.your_rent_ws.services.UserService;
 import com.yourrent.your_rent_ws.validations.ValidationBindingResult;
 
@@ -64,7 +64,7 @@ public class UserController {
     // * Method to register a new user, used in: registerAdmin, registerUser.
     private ResponseEntity<Map<String, Object>> registerNewUser(@Valid @RequestBody User user, BindingResult result) {
         if (result.hasFieldErrors()) {
-            return validationBindingResult.validation(result);
+            return validationBindingResult.validation(result, "user", null);
         }
         Map<String, Object> response = new HashMap<>();
         boolean emailExists = userService.existsByEmail(user.getEmail());
@@ -111,7 +111,7 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> updateUser(@Valid @RequestBody User user, BindingResult result,
             @PathVariable Long id) {
         if (result.hasFieldErrors()) {
-            return validationBindingResult.validation(result);
+            return validationBindingResult.validation(result, "user", null);
         }
         Optional<User> updateUser = userService.update(id, user);
         Map<String, Object> response = new HashMap<>();
@@ -131,7 +131,7 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> addAdminRole(@Valid @RequestBody UserRole userRole,
             BindingResult result) {
         if (result.hasFieldErrors()) {
-            return validationBindingResult.validation(result);
+            return validationBindingResult.validation(result, "user", null);
         }
         Optional<User> updateRole = userService.updateRoleAdmin(userRole);
         Map<String, Object> response = new HashMap<>();
@@ -150,7 +150,7 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> deleteAdminRole(@Valid @RequestBody UserRole userRole,
             BindingResult result) {
         if (result.hasFieldErrors()) {
-            return validationBindingResult.validation(result);
+            return validationBindingResult.validation(result, "user", null);
         }
         Optional<User> updateRole = userService.updateRoleUser(userRole);
         Map<String, Object> response = new HashMap<>();

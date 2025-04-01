@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yourrent.your_rent_ws.models.Role;
 import com.yourrent.your_rent_ws.models.User;
-import com.yourrent.your_rent_ws.models.UserRole;
+import com.yourrent.your_rent_ws.models.dto.UserRole;
 import com.yourrent.your_rent_ws.repositories.RoleRepository;
 import com.yourrent.your_rent_ws.repositories.UserRepository;
 import com.yourrent.your_rent_ws.services.UserService;

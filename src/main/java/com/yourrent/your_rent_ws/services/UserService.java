@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.yourrent.your_rent_ws.models.User;
-import com.yourrent.your_rent_ws.models.UserRole;
+import com.yourrent.your_rent_ws.models.dto.UserRole;
 
 public interface UserService {
     List<User> findAll();
